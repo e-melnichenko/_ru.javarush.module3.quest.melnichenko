@@ -1,4 +1,4 @@
-package repository;
+package quest.com.repository;
 
 import java.util.HashMap;
 import java.util.Map;

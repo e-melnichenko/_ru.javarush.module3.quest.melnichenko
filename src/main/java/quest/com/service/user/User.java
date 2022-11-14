@@ -1,8 +1,8 @@
-package service;
+package quest.com.service.user;
 
 import com.fasterxml.uuid.Generators;
 import lombok.Getter;
-import repository.TableEntity;
+import quest.com.repository.TableEntity;
 
 import java.util.UUID;
 

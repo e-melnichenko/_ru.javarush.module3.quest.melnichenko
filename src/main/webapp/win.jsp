@@ -4,8 +4,7 @@
 <jsp:include page="templates/head.jsp"/>
 <body>
 <jsp:include page="templates/header.jsp"/>
-
-<h1>Welcome</h1>
-<a href="<%=Route.NEW_GAME%>">start</a>
+you win
+<a href="<%=Route.NEW_GAME%>">new game</a>
 </body>
 </html>
