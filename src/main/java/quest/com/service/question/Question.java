@@ -4,6 +4,7 @@ import com.fasterxml.uuid.Generators;
 import lombok.Getter;
 import quest.com.service.answer.Answer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,11 +13,14 @@ public class Question {
     @Getter
     private final String text;
     @Getter
-    private final List<Answer> answerList;
+    private final List<Answer> answerList = new ArrayList<>();
 
-    public Question(String text, List<Answer> answerList) {
+    public Question(String text) {
         this.id = Generators.randomBasedGenerator().generate();
         this.text = text;
-        this.answerList = answerList;
+    }
+
+    public void addAnswer(Answer answer) {
+        answerList.add(answer);
     }
 }

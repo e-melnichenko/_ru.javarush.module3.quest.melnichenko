@@ -43,7 +43,7 @@ public class GameLogicServlet extends HttpServlet {
             response.sendRedirect(Route.WIN);
         } else if(answer.is(AnswerType.NEXT_QUESTION)) {
             NextQuestionAnswer nextQuestionAnswer = (NextQuestionAnswer) answer;
-            game.setCurrentQuestion(nextQuestionAnswer.nextQuestion);
+            game.setCurrentQuestion(nextQuestionAnswer.getNextQuestion());
             response.sendRedirect(Route.GAME);
         }
     }

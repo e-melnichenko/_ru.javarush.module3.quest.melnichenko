@@ -22,17 +22,15 @@ public class Game {
     }
 
     private Story createStory() {
-        ArrayList<Answer> answers1 = new ArrayList<>(Arrays.asList(
-                new WinAnswer("win answer", AnswerType.WIN, "you win!")
-        ));
-        ArrayList<Answer> answers2 = new ArrayList<>(Arrays.asList(
-                new WinAnswer("win answer", AnswerType.WIN, "you win!"),
-                new NextQuestionAnswer("next question answer", AnswerType.NEXT_QUESTION,  new Question("question 2", answers1))
-        ));
-        ArrayList<Question> questions2 = new ArrayList<>(Arrays.asList(
-                new Question("question 2", answers2)
-        ));
-        Storyline storyline = new Storyline(questions2);
+        Storyline storyline = new Storyline("my storyline");
+        storyline
+                .addQuestion("quest 1")
+                .addLoseAnswer("lose answer", "lose text")
+                .addWinAnswer("win answer", "win text")
+                .addNextQuestionAnswer("next question")
+                .addQuestion("quetsion 2")
+                .addWinAnswer("win answer", "win text");
+
         return new Story("my-story", storyline);
     }
 }

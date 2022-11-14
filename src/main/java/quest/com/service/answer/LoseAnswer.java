@@ -1,10 +1,10 @@
 package quest.com.service.answer;
 
 public class LoseAnswer extends Answer {
-    private final String looseText;
+    private final String loseText;
 
-    public LoseAnswer(String text, AnswerType answerType, String looseText) {
-        super(text, answerType);
-        this.looseText = looseText;
+    public LoseAnswer(String text, String loseText) {
+        super(text, AnswerType.LOSE);
+        this.loseText = loseText;
     }
 }
