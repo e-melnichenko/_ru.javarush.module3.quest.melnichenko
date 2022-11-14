@@ -1,14 +1,15 @@
-package controller;
+package quest.com.service.auth;
 
-import repository.UsersTable;
-import service.User;
+import quest.com.Route;
+import quest.com.repository.UsersTable;
+import quest.com.service.user.User;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "controller.SignUpServlet", value = "/sign-up")
+@WebServlet(name = "SignUpServlet", value = Route.SIGN_UP)
 public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,6 +20,6 @@ public class SignUpServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
-        response.sendRedirect("/");
+        response.sendRedirect(Route.HOME);
     }
 }

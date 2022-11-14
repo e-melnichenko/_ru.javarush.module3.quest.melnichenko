@@ -1,6 +1,7 @@
-package controller;
+package quest.com.controller;
 
-import service.User;
+import quest.com.service.game.Game;
+import quest.com.service.user.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,15 +13,22 @@ import java.io.IOException;
 
 import static java.util.Objects.isNull;
 
-@WebServlet(name = "StartServlet", value = "/")
+@WebServlet(name = "StartServlet", value = "/start")
 public class StartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+
         if(isNull(user)) {
             response.sendRedirect("/register.jsp");
             return;
+        }
+
+        Game game = (Game) session.getAttribute("game");
+
+        if(isNull(game)) {
+            session.setAttribute("game", new Game());
         }
 
         response.sendRedirect("_index.jsp");
