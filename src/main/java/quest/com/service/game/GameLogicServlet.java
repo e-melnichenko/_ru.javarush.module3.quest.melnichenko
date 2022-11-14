@@ -3,10 +3,14 @@ package quest.com.service.game;
 import quest.com.Route;
 import quest.com.service.answer.Answer;
 import quest.com.service.answer.AnswerType;
+import quest.com.service.answer.NextQuestionAnswer;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -37,7 +41,10 @@ public class GameLogicServlet extends HttpServlet {
 
         if(answer.is(AnswerType.WIN)) {
             response.sendRedirect(Route.WIN);
+        } else if(answer.is(AnswerType.NEXT_QUESTION)) {
+            NextQuestionAnswer nextQuestionAnswer = (NextQuestionAnswer) answer;
+            game.setCurrentQuestion(nextQuestionAnswer.nextQuestion);
+            response.sendRedirect(Route.GAME);
         }
-
     }
 }

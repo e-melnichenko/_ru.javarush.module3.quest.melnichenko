@@ -1,9 +1,9 @@
 package quest.com.service.game;
 
+import lombok.AccessLevel;
 import lombok.Getter;
-import quest.com.service.answer.Answer;
-import quest.com.service.answer.AnswerType;
-import quest.com.service.answer.WinAnswer;
+import lombok.Setter;
+import quest.com.service.answer.*;
 import quest.com.service.question.Question;
 import quest.com.service.story.Story;
 import quest.com.service.storyline.Storyline;
@@ -13,6 +13,7 @@ import java.util.Arrays;
 
 public class Game {
     @Getter
+    @Setter(AccessLevel.PACKAGE)
     private Question currentQuestion;
 
     public Game() {
@@ -21,13 +22,17 @@ public class Game {
     }
 
     private Story createStory() {
-        ArrayList<Answer> answers = new ArrayList<>(Arrays.asList(
-                new WinAnswer("win answer", AnswerType.WIN, "you are win!")
+        ArrayList<Answer> answers1 = new ArrayList<>(Arrays.asList(
+                new WinAnswer("win answer", AnswerType.WIN, "you win!")
         ));
-        ArrayList<Question> questions = new ArrayList<>(Arrays.asList(
-                new Question("question 1", answers)
+        ArrayList<Answer> answers2 = new ArrayList<>(Arrays.asList(
+                new WinAnswer("win answer", AnswerType.WIN, "you win!"),
+                new NextQuestionAnswer("next question answer", AnswerType.NEXT_QUESTION,  new Question("question 2", answers1))
         ));
-        Storyline storyline = new Storyline(questions);
+        ArrayList<Question> questions2 = new ArrayList<>(Arrays.asList(
+                new Question("question 2", answers2)
+        ));
+        Storyline storyline = new Storyline(questions2);
         return new Story("my-story", storyline);
     }
 }
