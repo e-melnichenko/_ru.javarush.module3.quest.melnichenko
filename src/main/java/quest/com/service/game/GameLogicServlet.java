@@ -1,9 +1,7 @@
 package quest.com.service.game;
 
 import quest.com.Route;
-import quest.com.service.answer.Answer;
-import quest.com.service.answer.AnswerType;
-import quest.com.service.answer.NextQuestionAnswer;
+import quest.com.service.answer.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,16 +33,21 @@ public class GameLogicServlet extends HttpServlet {
                 .orElse(null);
 
         if(isNull(answer)) {
-//            todo
-            System.out.println("answer is null");
+            throw new RuntimeException("Answer can't be null");
         }
 
-        if(answer.is(AnswerType.WIN)) {
-            response.sendRedirect(Route.WIN);
-        } else if(answer.is(AnswerType.NEXT_QUESTION)) {
+        if(answer.is(AnswerType.NEXT_QUESTION)) {
             NextQuestionAnswer nextQuestionAnswer = (NextQuestionAnswer) answer;
             game.setCurrentQuestion(nextQuestionAnswer.getNextQuestion());
             response.sendRedirect(Route.GAME);
+        } else if(answer.is(AnswerType.LOSE)) {
+            LoseAnswer loseAnswer = (LoseAnswer) answer;
+            session.setAttribute("loseText", loseAnswer.getLoseText());
+            response.sendRedirect(Route.LOSE);
+        } else if(answer.is(AnswerType.WIN)) {
+            WinAnswer winAnswer = (WinAnswer) answer;
+            session.setAttribute("winText", winAnswer.getWinText());
+            response.sendRedirect(Route.WIN);
         }
     }
 }

@@ -9,7 +9,6 @@
 
 <% Game game = (Game) session.getAttribute("game"); %>
 <% Question question = game.getCurrentQuestion(); %>
-<% List<Answer> answerList = question.getAnswerList(); %>
 
 <!DOCTYPE html>
 <html>
@@ -17,16 +16,21 @@
 <body>
 <jsp:include page="templates/header.jsp"/>
 
-<form action="<%=Route.GAME_ANSWER%>" method="post" name="name">
-    <%= question.getText() %>
+<div class="container">
+    <form action="<%=Route.GAME_ANSWER%>" method="post" class="mt-5">
+        <p><%= question.getText() %></p>
+        <div class="mb-3">
+            <c:forEach items="${game.getCurrentQuestion().getAnswerList()}" var="answer">
+                <div class="form-check">
+                    <input type="radio" name="answerId" class="form-check-input" id="${answer.getId()}" value="${answer.getId()}" required>
+                    <label for="${answer.getId()}" class="form-check-label">${answer.getText()}</label>
+                </div>
+            </c:forEach>
+        </div>
+        <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+</div>
 
-    <% for (Answer answer : answerList) { %>
-    <label>
-        <input type="radio" name="answerId" value="<%= answer.getId()%>"checked>
-        <%=answer.getText()%>
-    </label>
-    <% } %>
-    <button type="submit">submit</button>
-</form>
+<jsp:include page="templates/stats.jsp"/>
 </body>
 </html>

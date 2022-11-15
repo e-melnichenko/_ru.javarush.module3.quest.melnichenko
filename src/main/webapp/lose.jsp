@@ -7,8 +7,9 @@
 
 <div class="container">
     <div class="pt-3 pb-3">
-        <h1>User not found</h1>
-        <a href="<%=Route.AUTH%>" class="btn btn-primary">Registration</a>
+        <h1><%=session.getAttribute("loseText")%></h1>
+
+        <a href="<%=Route.NEW_GAME%>" class="btn btn-primary">Try again</a>
     </div>
 </div>
 </body>

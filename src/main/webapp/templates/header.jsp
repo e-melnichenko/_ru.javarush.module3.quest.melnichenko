@@ -1,8 +1,18 @@
+<%@ page import="static java.util.Objects.isNull" %>
 <%@ page import="quest.com.Route" %>
 
-<header>
-<% if(!request.getRequestURI().startsWith(Route.AUTH)) {%>
-  <p><a href="<%=Route.LOGOUT%>">logout</a></p>
-<% } %>
+<header class="p-3 text-bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col">
+        <h1>awesome quest</h1>
+      </div>
+      <% if(!isNull(session.getAttribute("user"))) {%>
+      <div class="col-auto ms-auto">
+        <a href="<%=Route.LOGOUT%>" class="btn btn-primary">logout</a>
+      </div>
+      <% } %>
+    </div>
+  </div>
 </header>
 
