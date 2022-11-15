@@ -1,6 +1,4 @@
-package quest.com.service.auth;
-
-import quest.com.Route;
+package quest.com.controller;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

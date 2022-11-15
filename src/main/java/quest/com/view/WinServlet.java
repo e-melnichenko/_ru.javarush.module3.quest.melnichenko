@@ -1,6 +1,6 @@
 package quest.com.view;
 
-import quest.com.Route;
+import quest.com.controller.Route;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

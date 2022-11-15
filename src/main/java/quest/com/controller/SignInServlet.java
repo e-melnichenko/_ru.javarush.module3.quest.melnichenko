@@ -1,7 +1,6 @@
-package quest.com.service.auth;
+package quest.com.controller;
 
-import quest.com.Route;
-import quest.com.repository.UsersTable;
+import quest.com.repository.UserTable;
 import quest.com.service.user.User;
 
 import javax.servlet.*;
@@ -9,14 +8,20 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "SignUpServlet", value = Route.SIGN_UP)
-public class SignUpServlet extends HttpServlet {
+import static java.util.Objects.isNull;
+
+@WebServlet(name = "SignInServlet", value = Route.SIGN_IN)
+public class SignInServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userName = request.getParameter("name");
         String userPassword = request.getParameter("password");
-        User user = new User(userName, userPassword);
-        UsersTable.getInstance().add(user);
+        User user = UserTable.getInstance().getUserByNameAndPassword(userName, userPassword);
+
+        if(isNull(user)) {
+            response.sendRedirect(Route.USER_NOT_FOUND);
+            return;
+        }
 
         HttpSession session = request.getSession();
         session.setAttribute("user", user);

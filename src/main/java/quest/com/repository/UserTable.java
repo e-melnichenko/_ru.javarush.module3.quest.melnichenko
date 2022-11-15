@@ -2,14 +2,14 @@ package quest.com.repository;
 
 import quest.com.service.user.User;
 
-public class UsersTable extends Table<User> {
-    private static UsersTable instance = new UsersTable();
+public class UserTable extends Table<User> {
+    private static UserTable instance = new UserTable();
 
-    public static UsersTable getInstance() {
+    public static UserTable getInstance() {
         return instance;
     }
 
-    private UsersTable() {}
+    private UserTable() {}
 
     public User getUserByNameAndPassword(String name, String password) {
         return tableMap.values().stream()

@@ -1,4 +1,4 @@
-package quest.com;
+package quest.com.controller;
 
 public final class Route {
     public static final String AUTH = "/auth";

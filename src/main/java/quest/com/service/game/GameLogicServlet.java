@@ -1,6 +1,6 @@
 package quest.com.service.game;
 
-import quest.com.Route;
+import quest.com.controller.Route;
 import quest.com.service.answer.*;
 
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-<%@ page import="quest.com.Route" %>
+<%@ page import="quest.com.controller.Route" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <jsp:include page="templates/head.jsp"/>

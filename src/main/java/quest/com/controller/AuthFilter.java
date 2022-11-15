@@ -1,7 +1,5 @@
 package quest.com.controller;
 
-import quest.com.Route;
-
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +22,6 @@ public class AuthFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         String path = httpRequest.getRequestURI();
-        System.out.println("path: " + path);
 
         if(path.startsWith(Route.AUTH)) {
             chain.doFilter(request, response);

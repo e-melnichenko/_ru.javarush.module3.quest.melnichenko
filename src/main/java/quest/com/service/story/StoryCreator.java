@@ -1,30 +1,21 @@
-package quest.com.service.storyline;
+package quest.com.service.story;
 
-import lombok.Getter;
 import quest.com.service.answer.AnswerType;
 import quest.com.service.answer.LoseAnswer;
 import quest.com.service.answer.NextQuestionAnswer;
 import quest.com.service.answer.WinAnswer;
 import quest.com.service.question.Question;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static java.util.Objects.isNull;
 
-public class Storyline implements StorylineDecorator {
-    @Getter
-    private final List<Question> questionList = new ArrayList<>();
-    private final String name;
+public class StoryCreator {
     private Question constructedQuestion;
+    private Question startQuestion;
 
-    public Storyline(String name) {
-        this.name = name;
-    }
+    public StoryCreator() {}
 
-    @Override
-    public StorylineDecorator addQuestion(String text) {
-        Question nextQuestion = new Question(text);
+    public StoryCreator addQuestion(String text) {
+        Question addedQuestion = new Question(text);
 
         if(!isNull(constructedQuestion)) {
             NextQuestionAnswer nextQuestionAnswer = (NextQuestionAnswer) constructedQuestion.getAnswerList().stream()
@@ -32,16 +23,16 @@ public class Storyline implements StorylineDecorator {
                     .findFirst()
                     .orElseThrow();
 
-            nextQuestionAnswer.setNextQuestion(nextQuestion);
-            questionList.add(constructedQuestion);
+            nextQuestionAnswer.setNextQuestion(addedQuestion);
+        } else {
+            startQuestion = addedQuestion;
         }
 
-        constructedQuestion = nextQuestion;
+        constructedQuestion = addedQuestion;
         return this;
     }
 
-    @Override
-    public StorylineDecorator addNextQuestionAnswer(String text) {
+    public StoryCreator addNextQuestionAnswer(String text) {
         checkConstructedQuestion();
         checkIfAlreadyExist();
 
@@ -50,8 +41,7 @@ public class Storyline implements StorylineDecorator {
         return this;
     }
 
-    @Override
-    public StorylineDecorator addLoseAnswer(String text, String loseText) {
+    public StoryCreator addLoseAnswer(String text, String loseText) {
         checkConstructedQuestion();
 
         constructedQuestion.addAnswer(new LoseAnswer(text, loseText));
@@ -59,17 +49,20 @@ public class Storyline implements StorylineDecorator {
         return this;
     }
 
-    @Override
-    public StorylineDecorator addWinAnswer(String text, String winText) {
+    public StoryCreator addWinAnswer(String text, String winText) {
         checkConstructedQuestion();
 
         constructedQuestion.addAnswer(new WinAnswer(text, winText));
         return this;
     }
 
+    public Story create(String storyName) {
+        return new Story(storyName, startQuestion);
+    }
+
     private void checkConstructedQuestion() {
         if(isNull(constructedQuestion)) {
-            throw new RuntimeException("There isn't question for answer in Storyline " + name);
+            throw new RuntimeException("There isn't question for answer in Story");
         }
     }
 

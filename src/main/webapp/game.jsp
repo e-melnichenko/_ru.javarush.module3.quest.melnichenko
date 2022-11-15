@@ -1,10 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="quest.com.service.user.User" %>
 <%@ page import="quest.com.service.game.Game" %>
 <%@ page import="quest.com.service.question.Question" %>
-<%@ page import="quest.com.service.answer.Answer" %>
-<%@ page import="java.util.List" %>
-<%@ page import="quest.com.Route" %>
+<%@ page import="quest.com.controller.Route" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <% Game game = (Game) session.getAttribute("game"); %>

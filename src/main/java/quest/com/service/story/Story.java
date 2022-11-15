@@ -1,18 +1,22 @@
 package quest.com.service.story;
 
+import com.fasterxml.uuid.Generators;
+import lombok.Getter;
+import quest.com.repository.TableEntity;
 import quest.com.service.question.Question;
-import quest.com.service.storyline.Storyline;
 
-public class Story {
-    private final String name;
-    private final Storyline storyline;
+import java.util.UUID;
 
-    public Story(String name, Storyline storyline) {
+public class Story implements TableEntity {
+    @Getter
+    private UUID id = Generators.randomBasedGenerator().generate();
+    @Getter
+    private String name;
+    @Getter
+    private Question startQuestion;
+
+    public Story(String name, Question startQuestion) {
         this.name = name;
-        this.storyline = storyline;
-    }
-
-    public Question start() {
-        return storyline.getQuestionList().get(0);
+        this.startQuestion = startQuestion;
     }
 }
