@@ -1,7 +1,11 @@
 package quest.com.service.game;
 
 import quest.com.controller.Route;
-import quest.com.service.answer.*;
+import quest.com.service.answer.Answer;
+import quest.com.service.answer.AnswerType;
+import quest.com.service.answer.LoseAnswer;
+import quest.com.service.answer.NextQuestionAnswer;
+import quest.com.service.answer.WinAnswer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

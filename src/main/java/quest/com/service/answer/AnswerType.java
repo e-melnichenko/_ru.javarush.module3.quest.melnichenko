@@ -4,5 +4,4 @@ public enum AnswerType {
     WIN,
     LOSE,
     NEXT_QUESTION,
-    NEW_STORYLINE,
 }

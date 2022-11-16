@@ -4,9 +4,11 @@ import quest.com.repository.StoryTable;
 import quest.com.service.story.Story;
 import quest.com.service.story.StoryCreator;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSessionAttributeListener;
+import javax.servlet.http.HttpSessionListener;
 
 @WebListener
 public class InitListener implements ServletContextListener, HttpSessionListener, HttpSessionAttributeListener {
