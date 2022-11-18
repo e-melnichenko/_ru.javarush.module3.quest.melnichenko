@@ -1,4 +1,4 @@
-package quest.com.service.user;
+package quest.com.entity;
 
 import com.fasterxml.uuid.Generators;
 import lombok.Getter;

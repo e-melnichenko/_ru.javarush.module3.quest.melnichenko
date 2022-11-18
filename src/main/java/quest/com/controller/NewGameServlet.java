@@ -1,8 +1,8 @@
 package quest.com.controller;
 
 import quest.com.repository.StoryTable;
-import quest.com.service.game.Game;
-import quest.com.service.story.Story;
+import quest.com.entity.Game;
+import quest.com.entity.story.Story;
 import quest.com.service.user.User;
 
 import javax.servlet.ServletException;

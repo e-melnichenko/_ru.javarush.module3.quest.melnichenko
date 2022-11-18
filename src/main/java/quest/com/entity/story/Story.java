@@ -1,9 +1,9 @@
-package quest.com.service.story;
+package quest.com.entity.story;
 
 import com.fasterxml.uuid.Generators;
 import lombok.Getter;
 import quest.com.repository.TableEntity;
-import quest.com.service.question.Question;
+import quest.com.entity.Question;
 
 import java.util.UUID;
 

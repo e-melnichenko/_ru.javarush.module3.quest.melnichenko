@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="quest.com.service.game.Game" %>
-<%@ page import="quest.com.service.question.Question" %>
+<%@ page import="quest.com.entity.Game" %>
+<%@ page import="quest.com.entity.Question" %>
 <%@ page import="quest.com.controller.Route" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 

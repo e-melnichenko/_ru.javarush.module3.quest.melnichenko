@@ -1,8 +1,8 @@
-package quest.com.service.init;
+package quest.com.controller;
 
 import quest.com.repository.StoryTable;
-import quest.com.service.story.Story;
-import quest.com.service.story.StoryCreator;
+import quest.com.entity.story.Story;
+import quest.com.entity.story.StoryCreator;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

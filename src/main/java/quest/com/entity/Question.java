@@ -1,8 +1,8 @@
-package quest.com.service.question;
+package quest.com.entity;
 
 import com.fasterxml.uuid.Generators;
 import lombok.Getter;
-import quest.com.service.answer.Answer;
+import quest.com.entity.answer.Answer;
 
 import java.util.ArrayList;
 import java.util.List;

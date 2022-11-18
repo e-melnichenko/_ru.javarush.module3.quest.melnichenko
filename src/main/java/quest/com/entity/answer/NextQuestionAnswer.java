@@ -1,8 +1,8 @@
-package quest.com.service.answer;
+package quest.com.entity.answer;
 
 import lombok.Getter;
 import lombok.Setter;
-import quest.com.service.question.Question;
+import quest.com.entity.Question;
 
 public class NextQuestionAnswer extends Answer {
     @Getter

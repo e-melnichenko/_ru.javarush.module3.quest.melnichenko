@@ -1,6 +1,6 @@
 package quest.com.repository;
 
-import quest.com.service.story.Story;
+import quest.com.entity.story.Story;
 
 import java.util.Collection;
 

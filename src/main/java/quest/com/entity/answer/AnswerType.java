@@ -1,4 +1,4 @@
-package quest.com.service.answer;
+package quest.com.entity.answer;
 
 public enum AnswerType {
     WIN,

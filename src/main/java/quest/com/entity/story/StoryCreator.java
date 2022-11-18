@@ -1,10 +1,10 @@
-package quest.com.service.story;
+package quest.com.entity.story;
 
-import quest.com.service.answer.AnswerType;
-import quest.com.service.answer.LoseAnswer;
-import quest.com.service.answer.NextQuestionAnswer;
-import quest.com.service.answer.WinAnswer;
-import quest.com.service.question.Question;
+import quest.com.entity.answer.AnswerType;
+import quest.com.entity.answer.LoseAnswer;
+import quest.com.entity.answer.NextQuestionAnswer;
+import quest.com.entity.answer.WinAnswer;
+import quest.com.entity.Question;
 
 import static java.util.Objects.isNull;
 

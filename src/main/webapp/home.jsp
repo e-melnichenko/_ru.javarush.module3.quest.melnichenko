@@ -1,6 +1,6 @@
 <%@ page import="quest.com.controller.Route" %>
 <%@ page import="quest.com.repository.StoryTable" %>
-<%@ page import="quest.com.service.story.Story" %>
+<%@ page import="quest.com.entity.story.Story" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <jsp:include page="templates/head.jsp"/>
