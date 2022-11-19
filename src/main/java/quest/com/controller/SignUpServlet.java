@@ -1,7 +1,7 @@
 package quest.com.controller;
 
+import quest.com.entity.User;
 import quest.com.repository.UserTable;
-import quest.com.service.user.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,11 +1,10 @@
 package quest.com.controller;
 
+import quest.com.entity.Game;
 import quest.com.entity.answer.Answer;
-import quest.com.entity.answer.AnswerType;
 import quest.com.entity.answer.LoseAnswer;
 import quest.com.entity.answer.NextQuestionAnswer;
 import quest.com.entity.answer.WinAnswer;
-import quest.com.entity.Game;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +29,7 @@ public class GameLogicServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Game game = (Game) session.getAttribute("game");
         UUID answerId = UUID.fromString(request.getParameter("answerId"));
-        System.out.println("answerId: " + answerId);
+
         Answer answer = game.getCurrentQuestion().getAnswerList().stream()
                 .filter(answerItem -> answerId.equals(answerItem.getId()))
                 .findFirst()
@@ -40,15 +39,15 @@ public class GameLogicServlet extends HttpServlet {
             throw new RuntimeException("Answer can't be null");
         }
 
-        if(answer.is(AnswerType.NEXT_QUESTION)) {
+        if(answer instanceof NextQuestionAnswer) {
             NextQuestionAnswer nextQuestionAnswer = (NextQuestionAnswer) answer;
             game.setCurrentQuestion(nextQuestionAnswer.getNextQuestion());
             response.sendRedirect(Route.GAME);
-        } else if(answer.is(AnswerType.LOSE)) {
+        } else if(answer instanceof LoseAnswer) {
             LoseAnswer loseAnswer = (LoseAnswer) answer;
             session.setAttribute("loseText", loseAnswer.getLoseText());
             response.sendRedirect(Route.LOSE);
-        } else if(answer.is(AnswerType.WIN)) {
+        } else if(answer instanceof WinAnswer) {
             WinAnswer winAnswer = (WinAnswer) answer;
             session.setAttribute("winText", winAnswer.getWinText());
             response.sendRedirect(Route.WIN);

@@ -1,10 +1,9 @@
 package quest.com.entity.story;
 
-import quest.com.entity.answer.AnswerType;
+import quest.com.entity.Question;
 import quest.com.entity.answer.LoseAnswer;
 import quest.com.entity.answer.NextQuestionAnswer;
 import quest.com.entity.answer.WinAnswer;
-import quest.com.entity.Question;
 
 import static java.util.Objects.isNull;
 
@@ -19,7 +18,7 @@ public class StoryCreator {
 
         if(!isNull(constructedQuestion)) {
             NextQuestionAnswer nextQuestionAnswer = (NextQuestionAnswer) constructedQuestion.getAnswerList().stream()
-                    .filter(answer -> answer.is(AnswerType.NEXT_QUESTION))
+                    .filter(answer -> answer instanceof NextQuestionAnswer)
                     .findFirst()
                     .orElseThrow();
 
@@ -68,7 +67,7 @@ public class StoryCreator {
 
     private void checkIfAlreadyExist() {
         Boolean isExist = constructedQuestion.getAnswerList().stream()
-                .anyMatch(answer -> answer.is(AnswerType.NEXT_QUESTION));
+                .anyMatch(answer -> answer instanceof NextQuestionAnswer);
 
         if(isExist) {
             throw new RuntimeException("AnswerType.NEXT_QUESTION already exist in question: " + constructedQuestion.getText());

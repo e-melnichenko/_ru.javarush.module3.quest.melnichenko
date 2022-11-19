@@ -1,6 +1,6 @@
 package quest.com.repository;
 
-import quest.com.service.user.User;
+import quest.com.entity.User;
 
 public class UserTable extends Table<User> {
     private static UserTable instance = new UserTable();

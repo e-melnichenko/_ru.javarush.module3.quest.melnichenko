@@ -7,7 +7,7 @@ public class WinAnswer extends Answer{
     private final String winText;
 
     public WinAnswer(String text, String winText) {
-        super(text, AnswerType.WIN);
+        super(text);
         this.winText = winText;
     }
 }

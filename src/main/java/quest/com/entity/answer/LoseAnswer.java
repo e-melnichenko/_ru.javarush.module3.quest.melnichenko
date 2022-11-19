@@ -7,7 +7,7 @@ public class LoseAnswer extends Answer {
     private final String loseText;
 
     public LoseAnswer(String text, String loseText) {
-        super(text, AnswerType.LOSE);
+        super(text);
         this.loseText = loseText;
     }
 }

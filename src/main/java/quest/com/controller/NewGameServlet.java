@@ -1,9 +1,9 @@
 package quest.com.controller;
 
+import quest.com.entity.User;
 import quest.com.repository.StoryTable;
 import quest.com.entity.Game;
 import quest.com.entity.story.Story;
-import quest.com.service.user.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

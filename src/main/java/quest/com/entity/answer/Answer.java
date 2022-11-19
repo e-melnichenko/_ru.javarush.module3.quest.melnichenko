@@ -10,16 +10,9 @@ public abstract class Answer {
     final private UUID id;
     @Getter
     final private String text;
-    @Getter
-    final private AnswerType answerType;
 
-    public Answer(String text, AnswerType answerType) {
+    public Answer(String text) {
         this.id = Generators.randomBasedGenerator().generate();
         this.text = text;
-        this.answerType = answerType;
-    }
-
-    public boolean is(AnswerType answerType) {
-        return this.answerType == answerType;
     }
 }
