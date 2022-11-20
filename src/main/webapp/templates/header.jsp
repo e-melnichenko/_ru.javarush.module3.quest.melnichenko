@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="static java.util.Objects.isNull" %>
 <%@ page import="quest.com.controller.Route" %>
 
@@ -9,7 +10,7 @@
       </div>
       <% if(!isNull(session.getAttribute("user"))) {%>
       <div class="col-auto ms-auto">
-        <a href="<%=Route.LOGOUT%>" class="btn btn-primary">logout</a>
+        <a href="<%=Route.LOGOUT%>" class="btn btn-primary">Выйти</a>
       </div>
       <% } %>
     </div>

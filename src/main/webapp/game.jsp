@@ -3,14 +3,10 @@
 <%@ page import="quest.com.entity.Question" %>
 <%@ page import="quest.com.controller.Route" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <% Game game = (Game) session.getAttribute("game"); %>
 <% Question question = game.getCurrentQuestion(); %>
 
-<!DOCTYPE html>
-<html>
 <jsp:include page="templates/head.jsp"/>
-<body>
 <jsp:include page="templates/header.jsp"/>
 
 <div class="container">
@@ -24,10 +20,9 @@
                 </div>
             </c:forEach>
         </div>
-        <button type="submit" class="btn btn-primary">Next</button>
+        <button type="submit" class="btn btn-primary">Ответить</button>
     </form>
 </div>
 
 <jsp:include page="templates/stats.jsp"/>
-</body>
-</html>
+<jsp:include page="templates/footer.jsp"/>

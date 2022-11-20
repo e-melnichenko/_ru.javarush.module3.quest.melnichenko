@@ -1,18 +1,19 @@
-<%@ page import="quest.com.service.user.User" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="quest.com.entity.User" %>
 <% User user = (User) session.getAttribute("user");%>
+
 <div class="container">
     <table class="table mt-5" style="width: 500px;">
         <tr>
-            <td>user</td>
+            <td>Имя</td>
             <td><%=user.getName()%></td>
         </tr>
         <tr>
-            <td>games count</td>
+            <td>Количество игр</td>
             <td><%=user.getGamesCount()%></td>
         </tr>
         <tr>
-            <td>ip</td>
+            <td>IP адрес</td>
             <td><%=request.getRemoteAddr()%></td>
         </tr>
     </table>
